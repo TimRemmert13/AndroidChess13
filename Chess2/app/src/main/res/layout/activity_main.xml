@@ -18,49 +18,61 @@
         android:layout_height="match_parent">
 
         <ImageButton
-                android:src="@drawable/chess_brook"
+            android:id="@+id/zerozero"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:src="@drawable/chess_brook" />
 
         <ImageButton
+            android:id="@+id/zeroone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/darkgreen"
+            android:src="@drawable/chess_bknight" />
+
+        <ImageButton
+            android:id="@+id/zerotwo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:src="@drawable/chess_bbishop" />
+
+        <ImageButton
+            android:id="@+id/zerothree"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/darkgreen"
+            android:src="@drawable/chess_bqueen" />
+
+        <ImageButton
+            android:id="@+id/zerofour"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/orange"
+            android:src="@drawable/chess_bking" />
+
+        <ImageButton
+            android:id="@+id/zerofive"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/darkgreen"
+            android:src="@drawable/chess_bbishop" />
+        <ImageButton
+            android:id="@+id/zerosix"
             android:src="@drawable/chess_bknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <ImageButton
-            android:src="@drawable/chess_bbishop"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
-            android:src="@drawable/chess_bqueen"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <ImageButton
-            android:src="@drawable/chess_bking"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/orange"/>
-        <ImageButton
-            android:src="@drawable/chess_bbishop"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <ImageButton
-            android:src="@drawable/chess_bknight"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/orange"/>
-        <ImageButton
+            android:id="@+id/zeroseven"
             android:src="@drawable/chess_brook"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -72,49 +84,59 @@
         android:layout_weight="1"
         android:weightSum="8"
         android:layout_height="match_parent">
+
         <ImageButton
-            android:src="@drawable/chess_bpawn"
+            android:id="@+id/onezero"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <ImageButton
-            android:src="@drawable/chess_bpawn"
-            android:layout_width="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/darkgreen"
+            android:src="@drawable/chess_bpawn" />
+
         <ImageButton
-            android:src="@drawable/chess_bpawn"
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <ImageButton
+            android:id="@+id/oneone"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/onetwo"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/onethree"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/onefour"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/onefive"
+            android:src="@drawable/chess_bpawn"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/orange"/>
+        <ImageButton
+            android:id="@+id/onesix"
+            android:src="@drawable/chess_bpawn"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/darkgreen"/>
+        <ImageButton
+            android:id="@+id/oneseven"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -126,185 +148,220 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:weightSum="8">
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twozero"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twoone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twotwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twothree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twofour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twofive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twosix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/twoseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:weightSum="8"
         android:layout_height="match_parent">
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threezero"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threeone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threetwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/orange"
-            />
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threethree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threefour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/threefive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
+        <ImageButton
+            android:id="@+id/threesix"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/darkgreen"/>
+        <ImageButton
+            android:id="@+id/threeseven"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/orange"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:weightSum="8"
         android:layout_height="match_parent">
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourzero"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourtwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourthree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourfour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourfive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/foursix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fourseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_weight="1"
         android:weightSum="8"
         android:layout_height="match_parent">
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivezero"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fiveone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivetwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivethree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivefour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivefive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fivesix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/fiveseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
+
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -312,48 +369,56 @@
         android:layout_weight="1"
         android:weightSum="8">
         <ImageButton
+            android:id="@+id/sixzero"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sixone"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sixtwo"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sixthree"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sixfour"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sixfive"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sixsix"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sixseven"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
@@ -367,48 +432,56 @@
         android:weightSum="8"
         android:layout_height="match_parent">
         <ImageButton
+            android:id="@+id/sevenzero"
             android:src="@drawable/chess_wrook"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sevenone"
             android:src="@drawable/chess_wknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/seventwo"
             android:src="@drawable/chess_wbishop"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/seventhree"
             android:src="@drawable/chess_wqueen"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sevenfour"
             android:src="@drawable/chess_wking"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sevenfive"
             android:src="@drawable/chess_wbishop"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/orange"/>
         <ImageButton
+            android:id="@+id/sevensix"
             android:src="@drawable/chess_wknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
         <ImageButton
+            android:id="@+id/sevenseven"
             android:src="@drawable/chess_wrook"
             android:layout_width="match_parent"
             android:layout_weight="1"

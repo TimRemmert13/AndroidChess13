@@ -1,5 +1,7 @@
 package game;
 
+import android.widget.ImageButton;
+
 import pieces.Piece;
 /**
  * Class to represent a tile of the chess board in a game of chess
@@ -16,8 +18,15 @@ public abstract class Tile {
      * Initializes a tile to have the given coordinate
      * @param coordinate
      */
+    protected ImageButton image;
+
     public Tile(String coordinate){
         this.coordinate = coordinate;
+    }
+
+    public Tile(String coordinate,ImageButton image){
+        this.coordinate = coordinate;
+        this.image = image;
     }
     /**
      * Abstract method to return true if a piece is on the tile
@@ -36,27 +45,41 @@ public abstract class Tile {
      * @author Tim Remmert
      *
      */
-    public static final class EmptyTile extends Tile{
+    public abstract void setImage(ImageButton image);
+
+    public static final class EmptyTile extends Tile {
         /**
          * Initializes the tile to have the given coordinate
+         *
          * @param coordinate
          */
-        public EmptyTile(String coordinate){
+        public EmptyTile(String coordinate) {
             super(coordinate);
         }
+
+        public EmptyTile(String coordinate, ImageButton image) {
+            super(coordinate, image);
+        }
+
         /**
          * Always returns true because it is an empty tile.
          */
         @Override
-        public boolean isEmpty(){
+        public boolean isEmpty() {
             return true;
         }
+
         /**
          * Always return null because it is an empty tile.
          */
         @Override
-        public Piece getPiece(){
+        public Piece getPiece() {
             return null;
+        }
+
+        @Override
+        public void setImage(ImageButton image) {
+            this.image = image;
         }
     }
     /**
@@ -79,6 +102,10 @@ public abstract class Tile {
             super(coordinate);
             this.piece = piece;
         }
+        public OccupiedTile(String coordinate, Piece piece, ImageButton image){
+            super(coordinate, image);
+            this.piece = piece;
+        }
         /**
          * Always returns false because there is a piece on the tile
          */
@@ -92,6 +119,11 @@ public abstract class Tile {
         @Override
         public Piece getPiece(){
             return this.piece;
+        }
+
+        @Override
+        public void setImage(ImageButton image){
+            this.image = image;
         }
     }
 

@@ -1,10 +1,21 @@
 package game;
 
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 import pieces.*;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+import com.example.timremmert.chess.R;
+
+import static com.example.timremmert.chess.R.drawable.chess_brook;
+import static com.example.timremmert.chess.R.id.zerozero;
+
 /**
  * Class to represent the board of a chess game.
  * @author Tim Remmert
@@ -319,6 +330,11 @@ public class Board {
      */
     public Player getPlayer(int x, int y){
         return this.board[x][y].getPiece().getPlayer();
+
+    }
+
+    public void setImage(ImageButton image, int x, int y){
+        this.board[x][y].setImage(image);
 
     }
     /**
