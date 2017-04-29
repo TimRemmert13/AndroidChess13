@@ -337,6 +337,11 @@ public class Board {
         this.board[x][y].setImage(image);
 
     }
+
+    public ImageButton getImage(int x, int y){
+        return board[x][y].image;
+
+    }
     /**
      * Method to set a tile of the board to a tile without a piece
      * @param loc This is the location of the piece on the board
