@@ -1,14 +1,16 @@
 package com.example.timremmert.chess;
-
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
 import android.view.*;
+import android.widget.Toast;
 import game.*;
 import pieces.*;
 //commit test
 public class MainActivity extends AppCompatActivity {
-    
+    int sign;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,14 +91,211 @@ public class MainActivity extends AppCompatActivity {
         board.setImage((ImageButton)findViewById(R.id.sevensix),7,6);
         board.setImage((ImageButton)findViewById(R.id.sevenseven),7,7);
 
+        /*clickChangeColor((ImageButton)findViewById(R.id.zerozero));
+        clickChangeColor((ImageButton)findViewById(R.id.zeroone));
+        clickChangeColor((ImageButton)findViewById(R.id.zerotwo));
+        clickChangeColor((ImageButton)findViewById(R.id.zerothree));
+        clickChangeColor((ImageButton)findViewById(R.id.zerofour));
+        clickChangeColor((ImageButton)findViewById(R.id.zerofive));
+        clickChangeColor((ImageButton)findViewById(R.id.zerosix));
+        clickChangeColor((ImageButton)findViewById(R.id.zeroseven));
+        //second row
+        clickChangeColor((ImageButton)findViewById(R.id.onezero));
+        clickChangeColor((ImageButton)findViewById(R.id.oneone));
+        clickChangeColor((ImageButton)findViewById(R.id.onetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.onethree));
+        clickChangeColor((ImageButton)findViewById(R.id.onefour));
+        clickChangeColor((ImageButton)findViewById(R.id.onefive));
+        clickChangeColor((ImageButton)findViewById(R.id.onesix));
+        clickChangeColor((ImageButton)findViewById(R.id.oneseven));
+        //third row
+        clickChangeColor((ImageButton)findViewById(R.id.twozero));
+        clickChangeColor((ImageButton)findViewById(R.id.twoone));
+        clickChangeColor((ImageButton)findViewById(R.id.twotwo));
+        clickChangeColor((ImageButton)findViewById(R.id.twothree));
+        clickChangeColor((ImageButton)findViewById(R.id.twofour));
+        clickChangeColor((ImageButton)findViewById(R.id.twofive));
+        clickChangeColor((ImageButton)findViewById(R.id.twosix));
+        clickChangeColor((ImageButton)findViewById(R.id.twoseven));
+        //fourth row
+        clickChangeColor((ImageButton)findViewById(R.id.threezero));
+        clickChangeColor((ImageButton)findViewById(R.id.threeone));
+        clickChangeColor((ImageButton)findViewById(R.id.threetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.threethree));
+        clickChangeColor((ImageButton)findViewById(R.id.threefour));
+        clickChangeColor((ImageButton)findViewById(R.id.threefive));
+        clickChangeColor((ImageButton)findViewById(R.id.threesix));
+        clickChangeColor((ImageButton)findViewById(R.id.threeseven));
+        //fifth row
+        clickChangeColor((ImageButton)findViewById(R.id.fourzero));
+        clickChangeColor((ImageButton)findViewById(R.id.fourone));
+        clickChangeColor((ImageButton)findViewById(R.id.fourtwo));
+        clickChangeColor((ImageButton)findViewById(R.id.fourthree));
+        clickChangeColor((ImageButton)findViewById(R.id.fourfour));
+        clickChangeColor((ImageButton)findViewById(R.id.fourfive));
+        clickChangeColor((ImageButton)findViewById(R.id.foursix));
+        clickChangeColor((ImageButton)findViewById(R.id.fourseven));
+        //sixth row
+        clickChangeColor((ImageButton)findViewById(R.id.fivezero));
+        clickChangeColor((ImageButton)findViewById(R.id.fiveone));
+        clickChangeColor((ImageButton)findViewById(R.id.fivetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.fivethree));
+        clickChangeColor((ImageButton)findViewById(R.id.fivefour));
+        clickChangeColor((ImageButton)findViewById(R.id.fivefive));
+        clickChangeColor((ImageButton)findViewById(R.id.fivesix));
+        clickChangeColor((ImageButton)findViewById(R.id.fiveseven));
+        //seventh row
+        clickChangeColor((ImageButton)findViewById(R.id.sixzero));
+        clickChangeColor((ImageButton)findViewById(R.id.sixone));
+        clickChangeColor((ImageButton)findViewById(R.id.sixtwo));
+        clickChangeColor((ImageButton)findViewById(R.id.sixthree));
+        clickChangeColor((ImageButton)findViewById(R.id.sixfour));
+        clickChangeColor((ImageButton)findViewById(R.id.sixfive));
+        clickChangeColor((ImageButton)findViewById(R.id.sixsix));
+        clickChangeColor((ImageButton)findViewById(R.id.sixseven));
+        //eighth row
+        clickChangeColor((ImageButton)findViewById(R.id.sevenzero));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenone));
+        clickChangeColor((ImageButton)findViewById(R.id.seventwo));
+        clickChangeColor((ImageButton)findViewById(R.id.seventhree));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenfour));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenfive));
+        clickChangeColor((ImageButton)findViewById(R.id.sevensix));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenseven));*/
+       // pawnMove((ImageButton)findViewById(R.id.twozero));
+        //ImageButton test = (ImageButton)findViewById(R.id.onezero);
+        //clickChangeColor(test);
+        //clickChangeColor((ImageButton)findViewById(R.id.twozero));
+
         setContentView(R.layout.activity_main);
+
+
+
+        clickChangeColor((ImageButton)findViewById(R.id.zerozero));
+        clickChangeColor((ImageButton)findViewById(R.id.zeroone));
+        clickChangeColor((ImageButton)findViewById(R.id.zerotwo));
+        clickChangeColor((ImageButton)findViewById(R.id.zerothree));
+        clickChangeColor((ImageButton)findViewById(R.id.zerofour));
+        clickChangeColor((ImageButton)findViewById(R.id.zerofive));
+        clickChangeColor((ImageButton)findViewById(R.id.zerosix));
+        clickChangeColor((ImageButton)findViewById(R.id.zeroseven));
+        //second row
+        clickChangeColor((ImageButton)findViewById(R.id.onezero));
+        clickChangeColor((ImageButton)findViewById(R.id.oneone));
+        clickChangeColor((ImageButton)findViewById(R.id.onetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.onethree));
+        clickChangeColor((ImageButton)findViewById(R.id.onefour));
+        clickChangeColor((ImageButton)findViewById(R.id.onefive));
+        clickChangeColor((ImageButton)findViewById(R.id.onesix));
+        clickChangeColor((ImageButton)findViewById(R.id.oneseven));
+        //third row
+        clickChangeColor((ImageButton)findViewById(R.id.twozero));
+        clickChangeColor((ImageButton)findViewById(R.id.twoone));
+        clickChangeColor((ImageButton)findViewById(R.id.twotwo));
+        clickChangeColor((ImageButton)findViewById(R.id.twothree));
+        clickChangeColor((ImageButton)findViewById(R.id.twofour));
+        clickChangeColor((ImageButton)findViewById(R.id.twofive));
+        clickChangeColor((ImageButton)findViewById(R.id.twosix));
+        clickChangeColor((ImageButton)findViewById(R.id.twoseven));
+        //fourth row
+        clickChangeColor((ImageButton)findViewById(R.id.threezero));
+        clickChangeColor((ImageButton)findViewById(R.id.threeone));
+        clickChangeColor((ImageButton)findViewById(R.id.threetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.threethree));
+        clickChangeColor((ImageButton)findViewById(R.id.threefour));
+        clickChangeColor((ImageButton)findViewById(R.id.threefive));
+        clickChangeColor((ImageButton)findViewById(R.id.threesix));
+        clickChangeColor((ImageButton)findViewById(R.id.threeseven));
+        //fifth row
+        clickChangeColor((ImageButton)findViewById(R.id.fourzero));
+        clickChangeColor((ImageButton)findViewById(R.id.fourone));
+        clickChangeColor((ImageButton)findViewById(R.id.fourtwo));
+        clickChangeColor((ImageButton)findViewById(R.id.fourthree));
+        clickChangeColor((ImageButton)findViewById(R.id.fourfour));
+        clickChangeColor((ImageButton)findViewById(R.id.fourfive));
+        clickChangeColor((ImageButton)findViewById(R.id.foursix));
+        clickChangeColor((ImageButton)findViewById(R.id.fourseven));
+        //sixth row
+        clickChangeColor((ImageButton)findViewById(R.id.fivezero));
+        clickChangeColor((ImageButton)findViewById(R.id.fiveone));
+        clickChangeColor((ImageButton)findViewById(R.id.fivetwo));
+        clickChangeColor((ImageButton)findViewById(R.id.fivethree));
+        clickChangeColor((ImageButton)findViewById(R.id.fivefour));
+        clickChangeColor((ImageButton)findViewById(R.id.fivefive));
+        clickChangeColor((ImageButton)findViewById(R.id.fivesix));
+        clickChangeColor((ImageButton)findViewById(R.id.fiveseven));
+        //seventh row
+        clickChangeColor((ImageButton)findViewById(R.id.sixzero));
+        clickChangeColor((ImageButton)findViewById(R.id.sixone));
+        clickChangeColor((ImageButton)findViewById(R.id.sixtwo));
+        clickChangeColor((ImageButton)findViewById(R.id.sixthree));
+        clickChangeColor((ImageButton)findViewById(R.id.sixfour));
+        clickChangeColor((ImageButton)findViewById(R.id.sixfive));
+        clickChangeColor((ImageButton)findViewById(R.id.sixsix));
+        clickChangeColor((ImageButton)findViewById(R.id.sixseven));
+        //eighth row
+        clickChangeColor((ImageButton)findViewById(R.id.sevenzero));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenone));
+        clickChangeColor((ImageButton)findViewById(R.id.seventwo));
+        clickChangeColor((ImageButton)findViewById(R.id.seventhree));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenfour));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenfive));
+        clickChangeColor((ImageButton)findViewById(R.id.sevensix));
+        clickChangeColor((ImageButton)findViewById(R.id.sevenseven));
+
+        //pawnMove((ImageButton)findViewById(R.id.onezero),(ImageButton)findViewById(R.id.twozero));
+
+
+        //System.out.println((ImageButton)findViewById(R.id.onezero).getDrawable());
+        //System.out.println(R.drawable.chess_bpawn);
     }
 
-    public View.OnClickListener selected= new View.OnClickListener(){
+    public void pawnMove(ImageButton b1, ImageButton b2){
+        if(b1.getDrawable() != null) {
+            if ((b1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.chess_bpawn).getConstantState()))) {
+                b2.setImageResource(R.drawable.chess_bpawn);
+                b1.setImageResource(android.R.color.transparent);
+            } else if ((b1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.chess_wpawn).getConstantState()))) {
+                b2.setImageResource(R.drawable.chess_wpawn);
+                b1.setImageResource(android.R.color.transparent);
+            }
+            System.out.println(getResources().getDrawable(R.drawable.chess_bpawn).getConstantState());
+            System.out.println(getResources().getDrawable(R.drawable.chess_bking).getConstantState());
+        }
+
+    }
+
+    /*public View.OnClickListener selected= new View.OnClickListener(){
         @Override
         public void onClick(View view) {
             view.setBackgroundResource(R.color.blue);
 
         }
-    };
+    };*/
+    public void clickChangeColor(final ImageButton currentButton) {
+
+        currentButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v){
+                Toast.makeText(MainActivity.this, "it works",Toast.LENGTH_LONG).show();
+                ColorDrawable buttonColor = (ColorDrawable) currentButton.getBackground();
+                int colorId = buttonColor.getColor();
+                if(colorId == getResources().getColor(R.color.orange)) {
+                    sign = 1;
+                    currentButton.setBackgroundColor(Color.BLUE);
+                }else if(colorId == getResources().getColor(R.color.darkgreen)){
+                    sign = 2;
+                    currentButton.setBackgroundColor(Color.BLUE);
+                }else if(sign == 1) {
+                    sign = 0;
+                    currentButton.setBackgroundColor(getColor(R.color.orange));
+                }else if(sign == 2){
+                    sign = 0;
+                    currentButton.setBackgroundColor(getColor(R.color.darkgreen));
+                }
+            }
+        });
+    }
+
+
+
 }
