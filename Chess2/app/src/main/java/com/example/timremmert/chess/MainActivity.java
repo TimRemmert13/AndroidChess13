@@ -10,6 +10,7 @@ import android.widget.ImageButton;
 import android.view.*;
 import android.widget.Toast;
 import game.*;
+import android.widget.Button;
 
 
 import pieces.*;
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     String second_mov;
 
-    String past_mov;
+    String undo_mov;
 
     int[] wK = {7, 4};
 
@@ -142,6 +143,8 @@ public class MainActivity extends AppCompatActivity {
         clicked("f1", (ImageButton) findViewById(R.id.sevenfive));
         clicked("g1", (ImageButton) findViewById(R.id.sevensix));
         clicked("h1", (ImageButton) findViewById(R.id.sevenseven));
+
+        undo((Button) findViewById(R.id.undo));
 
     }
 
@@ -420,12 +423,6 @@ public class MainActivity extends AppCompatActivity {
         board.toogleturns();
     }
 
-
-
-
-
-
-
     public void clicked(final String pos, final ImageButton currentButton) {
 
         currentButton.setOnClickListener(new View.OnClickListener() {
@@ -443,12 +440,41 @@ public class MainActivity extends AppCompatActivity {
                     finish = currentButton;
                     System.out.println("second click");
                     System.out.println(first_mov + " " + second_mov);
-                    past_mov = first_mov + " " + second_mov;
+                    undo_mov = second_mov + " " + first_mov;
                     move(first_mov, second_mov, start, finish);
                 }
 
             }
         });
+    }
+
+    public void undo(final Button button){
+
+        button.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v){
+                int[] piece = board.map(undo_mov.substring(0,2));
+                setImage(piece[0], piece[1], start);
+                clearImage(finish);
+                Piece temp = board.getPiece(piece[0], piece[1]);
+                board.setOccuppiedTile(temp, undo_mov.substring(3,5));
+                board.setEmptyTile(piece[0], piece[1]);
+                if(wturn){
+                    wturn = false;
+                    bturn = true;
+                    board.toogleturns();
+                }
+                else if(bturn){
+                    bturn = false;
+                    wturn = true;
+                    board.toogleturns();
+                }
+            }
+
+
+        });
+
     }
 
 

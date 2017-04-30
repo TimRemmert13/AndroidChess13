@@ -11,10 +11,6 @@ import pieces.*;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.timremmert.chess.R;
-
-import static com.example.timremmert.chess.R.drawable.chess_brook;
-import static com.example.timremmert.chess.R.id.zerozero;
 
 /**
  * Class to represent the board of a chess game.
@@ -333,10 +329,6 @@ public class Board {
 
     }
 
-    public void setImage(ImageButton image, int x, int y){
-        this.board[x][y].setImage(image);
-
-    }
     /**
      * Method to set a tile of the board to a tile without a piece
      * @param loc This is the location of the piece on the board
