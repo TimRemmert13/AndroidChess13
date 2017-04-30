@@ -1,6 +1,9 @@
 package com.example.timremmert.chess;
+import android.app.Notification;
+import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageButton;
@@ -8,290 +11,439 @@ import android.view.*;
 import android.widget.Toast;
 import game.*;
 import pieces.*;
+import android.app.AlertDialog.*;
+
+import static com.example.timremmert.chess.R.drawable.chess_bbishop;
+import static com.example.timremmert.chess.R.drawable.chess_bking;
+import static com.example.timremmert.chess.R.drawable.chess_bknight;
+import static com.example.timremmert.chess.R.drawable.chess_bpawn;
+import static com.example.timremmert.chess.R.drawable.chess_bqueen;
+import static com.example.timremmert.chess.R.drawable.chess_brook;
+import static com.example.timremmert.chess.R.drawable.chess_wbishop;
+import static com.example.timremmert.chess.R.drawable.chess_wking;
+import static com.example.timremmert.chess.R.drawable.chess_wknight;
+import static com.example.timremmert.chess.R.drawable.chess_wpawn;
+import static com.example.timremmert.chess.R.drawable.chess_wqueen;
+import static com.example.timremmert.chess.R.drawable.chess_wrook;
+
+
 //commit test
 public class MainActivity extends AppCompatActivity {
+
+    boolean done = false;
+
+    boolean wturn = true;
+
+    boolean bturn = false;
+
+    boolean wCheck = false;
+
+    boolean bCheck = false;
+
+    ImageButton start;
+
+    ImageButton finish;
+
+    Board board;
+
+    String first_mov;
+
+    String second_mov;
+
+    String past_mov;
+
+    int[] wK = {7, 4};
+
+    int[] bK = {0, 4};
+
     int sign;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //create board
-        Board board = new Board(8,8);
-
-        //connect image button to tiles on the board
-        //first row
-        board.setImage((ImageButton)findViewById(R.id.zerozero),0,0);
-        board.setImage((ImageButton)findViewById(R.id.zeroone),0,1);
-        board.setImage((ImageButton)findViewById(R.id.zerotwo),0,2);
-        board.setImage((ImageButton)findViewById(R.id.zerothree),0,3);
-        board.setImage((ImageButton)findViewById(R.id.zerofour),0,4);
-        board.setImage((ImageButton)findViewById(R.id.zerofive),0,5);
-        board.setImage((ImageButton)findViewById(R.id.zerosix),0,6);
-        board.setImage((ImageButton)findViewById(R.id.zeroseven),0,7);
-        //second row
-        board.setImage((ImageButton)findViewById(R.id.onezero),1,0);
-        board.setImage((ImageButton)findViewById(R.id.oneone),1,1);
-        board.setImage((ImageButton)findViewById(R.id.onetwo),1,2);
-        board.setImage((ImageButton)findViewById(R.id.onethree),1,3);
-        board.setImage((ImageButton)findViewById(R.id.onefour),1,4);
-        board.setImage((ImageButton)findViewById(R.id.onefive),1,5);
-        board.setImage((ImageButton)findViewById(R.id.onesix),1,6);
-        board.setImage((ImageButton)findViewById(R.id.oneseven),1,7);
-        //third row
-        board.setImage((ImageButton)findViewById(R.id.twozero),2,0);
-        board.setImage((ImageButton)findViewById(R.id.twoone),2,1);
-        board.setImage((ImageButton)findViewById(R.id.twotwo),2,2);
-        board.setImage((ImageButton)findViewById(R.id.twothree),2,3);
-        board.setImage((ImageButton)findViewById(R.id.twofour),2,4);
-        board.setImage((ImageButton)findViewById(R.id.twofive),2,5);
-        board.setImage((ImageButton)findViewById(R.id.twosix),2,6);
-        board.setImage((ImageButton)findViewById(R.id.twoseven),2,7);
-        //fourth row
-        board.setImage((ImageButton)findViewById(R.id.threezero),3,0);
-        board.setImage((ImageButton)findViewById(R.id.threeone),3,1);
-        board.setImage((ImageButton)findViewById(R.id.threetwo),3,2);
-        board.setImage((ImageButton)findViewById(R.id.threethree),3,3);
-        board.setImage((ImageButton)findViewById(R.id.threefour),3,4);
-        board.setImage((ImageButton)findViewById(R.id.threefive),3,5);
-        board.setImage((ImageButton)findViewById(R.id.threesix),3,6);
-        board.setImage((ImageButton)findViewById(R.id.threeseven),3,7);
-        //fifth row
-        board.setImage((ImageButton)findViewById(R.id.fourzero),4,0);
-        board.setImage((ImageButton)findViewById(R.id.fourone),4,1);
-        board.setImage((ImageButton)findViewById(R.id.fourtwo),4,2);
-        board.setImage((ImageButton)findViewById(R.id.fourthree),4,3);
-        board.setImage((ImageButton)findViewById(R.id.fourfour),4,4);
-        board.setImage((ImageButton)findViewById(R.id.fourfive),4,5);
-        board.setImage((ImageButton)findViewById(R.id.foursix),4,6);
-        board.setImage((ImageButton)findViewById(R.id.fourseven),4,7);
-        //sixth row
-        board.setImage((ImageButton)findViewById(R.id.fivezero),5,0);
-        board.setImage((ImageButton)findViewById(R.id.fiveone),5,1);
-        board.setImage((ImageButton)findViewById(R.id.fivetwo),5,2);
-        board.setImage((ImageButton)findViewById(R.id.fivethree),5,3);
-        board.setImage((ImageButton)findViewById(R.id.fivefour),5,4);
-        board.setImage((ImageButton)findViewById(R.id.fivefive),5,5);
-        board.setImage((ImageButton)findViewById(R.id.fivesix),5,6);
-        board.setImage((ImageButton)findViewById(R.id.fiveseven),5,7);
-        //seventh row
-        board.setImage((ImageButton)findViewById(R.id.sixzero),6,0);
-        board.setImage((ImageButton)findViewById(R.id.sixone),6,1);
-        board.setImage((ImageButton)findViewById(R.id.sixtwo),6,2);
-        board.setImage((ImageButton)findViewById(R.id.sixthree),6,3);
-        board.setImage((ImageButton)findViewById(R.id.sixfour),6,4);
-        board.setImage((ImageButton)findViewById(R.id.sixfive),6,5);
-        board.setImage((ImageButton)findViewById(R.id.sixsix),6,6);
-        board.setImage((ImageButton)findViewById(R.id.sixseven),6,7);
-        //eighth row
-        board.setImage((ImageButton)findViewById(R.id.sevenzero),7,0);
-        board.setImage((ImageButton)findViewById(R.id.sevenone),7,1);
-        board.setImage((ImageButton)findViewById(R.id.seventwo),7,2);
-        board.setImage((ImageButton)findViewById(R.id.seventhree),7,3);
-        board.setImage((ImageButton)findViewById(R.id.sevenfour),7,4);
-        board.setImage((ImageButton)findViewById(R.id.sevenfive),7,5);
-        board.setImage((ImageButton)findViewById(R.id.sevensix),7,6);
-        board.setImage((ImageButton)findViewById(R.id.sevenseven),7,7);
-
-        /*clickChangeColor((ImageButton)findViewById(R.id.zerozero));
-        clickChangeColor((ImageButton)findViewById(R.id.zeroone));
-        clickChangeColor((ImageButton)findViewById(R.id.zerotwo));
-        clickChangeColor((ImageButton)findViewById(R.id.zerothree));
-        clickChangeColor((ImageButton)findViewById(R.id.zerofour));
-        clickChangeColor((ImageButton)findViewById(R.id.zerofive));
-        clickChangeColor((ImageButton)findViewById(R.id.zerosix));
-        clickChangeColor((ImageButton)findViewById(R.id.zeroseven));
-        //second row
-        clickChangeColor((ImageButton)findViewById(R.id.onezero));
-        clickChangeColor((ImageButton)findViewById(R.id.oneone));
-        clickChangeColor((ImageButton)findViewById(R.id.onetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.onethree));
-        clickChangeColor((ImageButton)findViewById(R.id.onefour));
-        clickChangeColor((ImageButton)findViewById(R.id.onefive));
-        clickChangeColor((ImageButton)findViewById(R.id.onesix));
-        clickChangeColor((ImageButton)findViewById(R.id.oneseven));
-        //third row
-        clickChangeColor((ImageButton)findViewById(R.id.twozero));
-        clickChangeColor((ImageButton)findViewById(R.id.twoone));
-        clickChangeColor((ImageButton)findViewById(R.id.twotwo));
-        clickChangeColor((ImageButton)findViewById(R.id.twothree));
-        clickChangeColor((ImageButton)findViewById(R.id.twofour));
-        clickChangeColor((ImageButton)findViewById(R.id.twofive));
-        clickChangeColor((ImageButton)findViewById(R.id.twosix));
-        clickChangeColor((ImageButton)findViewById(R.id.twoseven));
-        //fourth row
-        clickChangeColor((ImageButton)findViewById(R.id.threezero));
-        clickChangeColor((ImageButton)findViewById(R.id.threeone));
-        clickChangeColor((ImageButton)findViewById(R.id.threetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.threethree));
-        clickChangeColor((ImageButton)findViewById(R.id.threefour));
-        clickChangeColor((ImageButton)findViewById(R.id.threefive));
-        clickChangeColor((ImageButton)findViewById(R.id.threesix));
-        clickChangeColor((ImageButton)findViewById(R.id.threeseven));
-        //fifth row
-        clickChangeColor((ImageButton)findViewById(R.id.fourzero));
-        clickChangeColor((ImageButton)findViewById(R.id.fourone));
-        clickChangeColor((ImageButton)findViewById(R.id.fourtwo));
-        clickChangeColor((ImageButton)findViewById(R.id.fourthree));
-        clickChangeColor((ImageButton)findViewById(R.id.fourfour));
-        clickChangeColor((ImageButton)findViewById(R.id.fourfive));
-        clickChangeColor((ImageButton)findViewById(R.id.foursix));
-        clickChangeColor((ImageButton)findViewById(R.id.fourseven));
-        //sixth row
-        clickChangeColor((ImageButton)findViewById(R.id.fivezero));
-        clickChangeColor((ImageButton)findViewById(R.id.fiveone));
-        clickChangeColor((ImageButton)findViewById(R.id.fivetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.fivethree));
-        clickChangeColor((ImageButton)findViewById(R.id.fivefour));
-        clickChangeColor((ImageButton)findViewById(R.id.fivefive));
-        clickChangeColor((ImageButton)findViewById(R.id.fivesix));
-        clickChangeColor((ImageButton)findViewById(R.id.fiveseven));
-        //seventh row
-        clickChangeColor((ImageButton)findViewById(R.id.sixzero));
-        clickChangeColor((ImageButton)findViewById(R.id.sixone));
-        clickChangeColor((ImageButton)findViewById(R.id.sixtwo));
-        clickChangeColor((ImageButton)findViewById(R.id.sixthree));
-        clickChangeColor((ImageButton)findViewById(R.id.sixfour));
-        clickChangeColor((ImageButton)findViewById(R.id.sixfive));
-        clickChangeColor((ImageButton)findViewById(R.id.sixsix));
-        clickChangeColor((ImageButton)findViewById(R.id.sixseven));
-        //eighth row
-        clickChangeColor((ImageButton)findViewById(R.id.sevenzero));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenone));
-        clickChangeColor((ImageButton)findViewById(R.id.seventwo));
-        clickChangeColor((ImageButton)findViewById(R.id.seventhree));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenfour));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenfive));
-        clickChangeColor((ImageButton)findViewById(R.id.sevensix));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenseven));*/
-       // pawnMove((ImageButton)findViewById(R.id.twozero));
-        //ImageButton test = (ImageButton)findViewById(R.id.onezero);
-        //clickChangeColor(test);
-        //clickChangeColor((ImageButton)findViewById(R.id.twozero));
-
+        Board board = new Board(8, 8);
+        this.board = board;
+        board.getPlayer(7, 0).toggleTurn();
         setContentView(R.layout.activity_main);
 
-
-
-        clickChangeColor((ImageButton)findViewById(R.id.zerozero));
-        clickChangeColor((ImageButton)findViewById(R.id.zeroone));
-        clickChangeColor((ImageButton)findViewById(R.id.zerotwo));
-        clickChangeColor((ImageButton)findViewById(R.id.zerothree));
-        clickChangeColor((ImageButton)findViewById(R.id.zerofour));
-        clickChangeColor((ImageButton)findViewById(R.id.zerofive));
-        clickChangeColor((ImageButton)findViewById(R.id.zerosix));
-        clickChangeColor((ImageButton)findViewById(R.id.zeroseven));
+        //initialize buttons
+        clicked("a8", (ImageButton) findViewById(R.id.zerozero));
+        clicked("b8", (ImageButton) findViewById(R.id.zeroone));
+        clicked("c8", (ImageButton) findViewById(R.id.zerotwo));
+        clicked("d8", (ImageButton) findViewById(R.id.zerothree));
+        clicked("e8", (ImageButton) findViewById(R.id.zerofour));
+        clicked("f8", (ImageButton) findViewById(R.id.zerofive));
+        clicked("g8", (ImageButton) findViewById(R.id.zerosix));
+        clicked("h8", (ImageButton) findViewById(R.id.zeroseven));
         //second row
-        clickChangeColor((ImageButton)findViewById(R.id.onezero));
-        clickChangeColor((ImageButton)findViewById(R.id.oneone));
-        clickChangeColor((ImageButton)findViewById(R.id.onetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.onethree));
-        clickChangeColor((ImageButton)findViewById(R.id.onefour));
-        clickChangeColor((ImageButton)findViewById(R.id.onefive));
-        clickChangeColor((ImageButton)findViewById(R.id.onesix));
-        clickChangeColor((ImageButton)findViewById(R.id.oneseven));
+        clicked("a7", (ImageButton) findViewById(R.id.onezero));
+        clicked("b7", (ImageButton) findViewById(R.id.oneone));
+        clicked("c7", (ImageButton) findViewById(R.id.onetwo));
+        clicked("d7", (ImageButton) findViewById(R.id.onethree));
+        clicked("e7", (ImageButton) findViewById(R.id.onefour));
+        clicked("f7", (ImageButton) findViewById(R.id.onefive));
+        clicked("g7", (ImageButton) findViewById(R.id.onesix));
+        clicked("h7", (ImageButton) findViewById(R.id.oneseven));
         //third row
-        clickChangeColor((ImageButton)findViewById(R.id.twozero));
-        clickChangeColor((ImageButton)findViewById(R.id.twoone));
-        clickChangeColor((ImageButton)findViewById(R.id.twotwo));
-        clickChangeColor((ImageButton)findViewById(R.id.twothree));
-        clickChangeColor((ImageButton)findViewById(R.id.twofour));
-        clickChangeColor((ImageButton)findViewById(R.id.twofive));
-        clickChangeColor((ImageButton)findViewById(R.id.twosix));
-        clickChangeColor((ImageButton)findViewById(R.id.twoseven));
+        clicked("a6", (ImageButton) findViewById(R.id.twozero));
+        clicked("b6", (ImageButton) findViewById(R.id.twoone));
+        clicked("c6", (ImageButton) findViewById(R.id.twotwo));
+        clicked("d6", (ImageButton) findViewById(R.id.twothree));
+        clicked("e6", (ImageButton) findViewById(R.id.twofour));
+        clicked("f6", (ImageButton) findViewById(R.id.twofive));
+        clicked("g6", (ImageButton) findViewById(R.id.twosix));
+        clicked("h6", (ImageButton) findViewById(R.id.twoseven));
         //fourth row
-        clickChangeColor((ImageButton)findViewById(R.id.threezero));
-        clickChangeColor((ImageButton)findViewById(R.id.threeone));
-        clickChangeColor((ImageButton)findViewById(R.id.threetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.threethree));
-        clickChangeColor((ImageButton)findViewById(R.id.threefour));
-        clickChangeColor((ImageButton)findViewById(R.id.threefive));
-        clickChangeColor((ImageButton)findViewById(R.id.threesix));
-        clickChangeColor((ImageButton)findViewById(R.id.threeseven));
+        clicked("a5", (ImageButton) findViewById(R.id.threezero));
+        clicked("b5", (ImageButton) findViewById(R.id.threeone));
+        clicked("c5", (ImageButton) findViewById(R.id.threetwo));
+        clicked("d5", (ImageButton) findViewById(R.id.threethree));
+        clicked("e5", (ImageButton) findViewById(R.id.threefour));
+        clicked("f5", (ImageButton) findViewById(R.id.threefive));
+        clicked("g5", (ImageButton) findViewById(R.id.threesix));
+        clicked("h5", (ImageButton) findViewById(R.id.threeseven));
         //fifth row
-        clickChangeColor((ImageButton)findViewById(R.id.fourzero));
-        clickChangeColor((ImageButton)findViewById(R.id.fourone));
-        clickChangeColor((ImageButton)findViewById(R.id.fourtwo));
-        clickChangeColor((ImageButton)findViewById(R.id.fourthree));
-        clickChangeColor((ImageButton)findViewById(R.id.fourfour));
-        clickChangeColor((ImageButton)findViewById(R.id.fourfive));
-        clickChangeColor((ImageButton)findViewById(R.id.foursix));
-        clickChangeColor((ImageButton)findViewById(R.id.fourseven));
+        clicked("a4", (ImageButton) findViewById(R.id.fourzero));
+        clicked("b4", (ImageButton) findViewById(R.id.fourone));
+        clicked("c4", (ImageButton) findViewById(R.id.fourtwo));
+        clicked("d4", (ImageButton) findViewById(R.id.fourthree));
+        clicked("e4", (ImageButton) findViewById(R.id.fourfour));
+        clicked("f4", (ImageButton) findViewById(R.id.fourfive));
+        clicked("g4", (ImageButton) findViewById(R.id.foursix));
+        clicked("h4", (ImageButton) findViewById(R.id.fourseven));
         //sixth row
-        clickChangeColor((ImageButton)findViewById(R.id.fivezero));
-        clickChangeColor((ImageButton)findViewById(R.id.fiveone));
-        clickChangeColor((ImageButton)findViewById(R.id.fivetwo));
-        clickChangeColor((ImageButton)findViewById(R.id.fivethree));
-        clickChangeColor((ImageButton)findViewById(R.id.fivefour));
-        clickChangeColor((ImageButton)findViewById(R.id.fivefive));
-        clickChangeColor((ImageButton)findViewById(R.id.fivesix));
-        clickChangeColor((ImageButton)findViewById(R.id.fiveseven));
+        clicked("a3", (ImageButton) findViewById(R.id.fivezero));
+        clicked("b3", (ImageButton) findViewById(R.id.fiveone));
+        clicked("c3", (ImageButton) findViewById(R.id.fivetwo));
+        clicked("d3", (ImageButton) findViewById(R.id.fivethree));
+        clicked("e3", (ImageButton) findViewById(R.id.fivefour));
+        clicked("f3", (ImageButton) findViewById(R.id.fivefive));
+        clicked("g3", (ImageButton) findViewById(R.id.fivesix));
+        clicked("h3", (ImageButton) findViewById(R.id.fiveseven));
         //seventh row
-        clickChangeColor((ImageButton)findViewById(R.id.sixzero));
-        clickChangeColor((ImageButton)findViewById(R.id.sixone));
-        clickChangeColor((ImageButton)findViewById(R.id.sixtwo));
-        clickChangeColor((ImageButton)findViewById(R.id.sixthree));
-        clickChangeColor((ImageButton)findViewById(R.id.sixfour));
-        clickChangeColor((ImageButton)findViewById(R.id.sixfive));
-        clickChangeColor((ImageButton)findViewById(R.id.sixsix));
-        clickChangeColor((ImageButton)findViewById(R.id.sixseven));
+        clicked("a2", (ImageButton) findViewById(R.id.sixzero));
+        clicked("b2", (ImageButton) findViewById(R.id.sixone));
+        clicked("c2", (ImageButton) findViewById(R.id.sixtwo));
+        clicked("d2", (ImageButton) findViewById(R.id.sixthree));
+        clicked("e2", (ImageButton) findViewById(R.id.sixfour));
+        clicked("f2", (ImageButton) findViewById(R.id.sixfive));
+        clicked("g2", (ImageButton) findViewById(R.id.sixsix));
+        clicked("h2", (ImageButton) findViewById(R.id.sixseven));
         //eighth row
-        clickChangeColor((ImageButton)findViewById(R.id.sevenzero));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenone));
-        clickChangeColor((ImageButton)findViewById(R.id.seventwo));
-        clickChangeColor((ImageButton)findViewById(R.id.seventhree));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenfour));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenfive));
-        clickChangeColor((ImageButton)findViewById(R.id.sevensix));
-        clickChangeColor((ImageButton)findViewById(R.id.sevenseven));
+        clicked("a1", (ImageButton) findViewById(R.id.sevenzero));
+        clicked("b1", (ImageButton) findViewById(R.id.sevenone));
+        clicked("c1", (ImageButton) findViewById(R.id.seventwo));
+        clicked("d1", (ImageButton) findViewById(R.id.seventhree));
+        clicked("e1", (ImageButton) findViewById(R.id.sevenfour));
+        clicked("f1", (ImageButton) findViewById(R.id.sevenfive));
+        clicked("g1", (ImageButton) findViewById(R.id.sevensix));
+        clicked("h1", (ImageButton) findViewById(R.id.sevenseven));
 
-        //pawnMove((ImageButton)findViewById(R.id.onezero),(ImageButton)findViewById(R.id.twozero));
-
-
-        //System.out.println((ImageButton)findViewById(R.id.onezero).getDrawable());
-        //System.out.println(R.drawable.chess_bpawn);
     }
 
-    public void pawnMove(ImageButton b1, ImageButton b2){
-        if(b1.getDrawable() != null) {
-            if ((b1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.chess_bpawn).getConstantState()))) {
-                b2.setImageResource(R.drawable.chess_bpawn);
-                b1.setImageResource(android.R.color.transparent);
-            } else if ((b1.getDrawable().getConstantState().equals(getResources().getDrawable(R.drawable.chess_wpawn).getConstantState()))) {
-                b2.setImageResource(R.drawable.chess_wpawn);
-                b1.setImageResource(android.R.color.transparent);
+    public void setImage(int start, int dest, ImageButton image){
+        String actual = board.getPiece(start, dest).getName();
+        switch(actual){
+            case "wK" :
+                image.setImageResource(chess_wking);
+                break;
+            case "bK" :
+                image.setImageResource(chess_bking);
+                break;
+            case "wQ" :
+                image.setImageResource(chess_wqueen);
+                break;
+            case "bQ" :
+                image.setImageResource(chess_bqueen);
+                break;
+            case "wB" :
+                image.setImageResource(chess_wbishop);
+                break;
+            case "bB" :
+                image.setImageResource(chess_bbishop);
+                break;
+            case "wN" :
+                image.setImageResource(chess_wknight);
+                break;
+            case "bN" :
+                image.setImageResource(chess_bknight);
+                break;
+            case "wR" :
+                image.setImageResource(chess_wrook);
+                break;
+            case "bR" :
+                image.setImageResource(chess_brook);
+                break;
+            case "wp" :
+                image.setImageResource(chess_wpawn);
+                break;
+            case "bp" :
+                image.setImageResource(chess_bpawn);
+                break;
+        }
+    }
+
+    public void clearImage(ImageButton image){
+        image.setImageDrawable(image.getBackground());
+    }
+
+    public void move(String first_mov, String second_mov, ImageButton start, ImageButton finish) {
+        if (wturn) {
+            if (board.findCheck(wK[0], wK[1])) {
+                if (board.findCheckMate(wK)) {
+                    //put notification here
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                    alert.setMessage("Checkmate! White wins!");
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    Toast.makeText(MainActivity.this, "you clicked Ok", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+                    AlertDialog alertDialog = alert.create();
+                    alertDialog.show();
+                    return;
+                } else {
+                    //put notification here
+                    Toast.makeText(MainActivity.this, "Check!", Toast.LENGTH_LONG).show();
+                    System.out.println("Check");
+                    System.out.println();
+                    wCheck = true;
+                }
             }
-            System.out.println(getResources().getDrawable(R.drawable.chess_bpawn).getConstantState());
-            System.out.println(getResources().getDrawable(R.drawable.chess_bking).getConstantState());
+            System.out.println("white's turn");
+            wturn = false;
+            bturn = true;
+        } else if (bturn) {
+            if (board.findCheck(bK[0], bK[1])) {
+                if (board.findCheckMate(bK)) {
+                    //put notification here
+                    AlertDialog.Builder alert = new AlertDialog.Builder(this);
+                    alert.setMessage("Checkmate! White wins!");
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    Toast.makeText(MainActivity.this, "you clicked Ok", Toast.LENGTH_LONG).show();
+                                }
+                            });
+                            alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    });
+                    AlertDialog alertDialog = alert.create();
+                    alertDialog.show();
+                    return;
+                } else {
+                    //put notification here
+                    Toast.makeText(MainActivity.this, "Check!", Toast.LENGTH_LONG).show();
+                    System.out.println("Check");
+                    System.out.println();
+                    bCheck = true;
+                }
+            }
+            System.out.println("black's turn");
+            wturn = true;
+            bturn = false;
+        }
+        String move = first_mov + " " + second_mov;
+        int piece[] = board.map(move);
+        if (!board.getPlayer(piece[0], piece[1]).getTurn()) {
+            //put toast here
+            Toast.makeText(MainActivity.this, "It's not your turn", Toast.LENGTH_LONG).show();
+            System.out.println("It's not your turn");
+            System.out.println();
+            if (bturn) {
+                bturn = false;
+                wturn = true;
+            } else {
+                bturn = true;
+                wturn = false;
+            }
+            return;
         }
 
+        if (board.getPiece(piece[0], piece[1]).validPath(board, move)) {
+            int dest[] = board.map(move.substring(3, 5));
+            boolean empty = false;
+            Piece temp = null;
+            if (board.emptyCheck(dest[0], dest[1])) {
+                empty = true;
+            }
+            else{
+                temp = board.getPiece(dest[0], dest[1]);
+            }
+            if (board.getPiece(piece[0], piece[1]) instanceof King) {
+                board.getPiece(piece[0], piece[1]).setMoved();
+            }
+            if (board.getPiece(piece[0], piece[1]) instanceof Rook) {
+                board.getPiece(piece[0], piece[1]).setMoved();
+            }
+            //update image here
+            setImage(piece[0], piece[1], finish);
+            clearImage(start);
+            System.out.println("reset");
+            board.setOccuppiedTile(board.getPiece(piece[0], piece[1]), move.substring(3, 5));
+            board.setEmptyTile(move.substring(0, 2));
+            //check Promotion
+            if (board.getPiece(dest[0], dest[1]) instanceof Pawn) {
+                if (board.getPlayer(dest[0], dest[1]).getColor() == "white") {
+                    if (dest[0] == 0) {
+                        // need to update image here
+                        Piece q2 = new Queen("wQ", board.getPlayer(dest[0], dest[1]));
+                        board.setOccuppiedTile(q2, dest[0], dest[1]);
+                        setImage(dest[0], dest[1], finish);
+                    }
+                } else if (board.getPlayer(dest[0], dest[1]).getColor() == "black") {
+                    if (dest[0] == 7) {
+                        //need to update image here
+                        Piece q3 = new Queen("bQ", board.getPlayer(dest[0], dest[1]));
+                        board.setOccuppiedTile(q3, dest[0], dest[1]);
+                        setImage(dest[0], dest[1], finish);
+                    }
+                }
+            }
+            if(dest[0] == wK[0] && dest[1] == wK[1]){
+                wK = board.map(move.substring(3,5));
+            }
+            if(dest[0] == bK[0] && dest[1] == bK[1]){
+                bK = board.map(move.substring(3,5));
+            }
+            if (bCheck) {
+                boolean bkingmov = false;
+                boolean wkingmov = false;
+                if (dest[0] == wK[0] && dest[1] == wK[1]) {
+                    wK = board.map(move.substring(3, 5));
+                    wkingmov = true;
+                }
+                if (dest[0] == bK[0] && dest[1] == bK[1]) {
+                    bK = board.map(move.substring(3, 5));
+                    bkingmov = true;
+                }
+                if (board.findCheck(bK[0], bK[1])) {
+                    board.setOccuppiedTile(board.getPiece(dest[0], dest[1]), move.substring(0, 2));
+                    if (empty) {
+                        board.setEmptyTile(dest[0], dest[1]);
+                    } else {
+                        board.setOccuppiedTile(temp, dest[0], dest[1]);
+                    }
+                    if (wkingmov) {
+                        wK = piece;
+                    }
+                    if (bkingmov) {
+                        bK = piece;
+                    }
+                    //put notification here
+                    Toast.makeText(MainActivity.this,"Illegal move, try again", Toast.LENGTH_LONG).show();
+                    System.out.println("Illegal move, try again");
+                    System.out.println();
+                    if (bturn) {
+                        bturn = false;
+                        wturn = true;
+                    } else {
+                        bturn = true;
+                        wturn = false;
+                    }
+                    return;
+                } else {
+                    bCheck = false;
+                }
+
+            }
+            if (wCheck) {
+                boolean bkingmov = false;
+                boolean wkingmov = false;
+                if (piece[0] == wK[0] && piece[1] == wK[1]) {
+                    wK = board.map(move.substring(3, 5));
+                    wkingmov = true;
+                }
+                if (piece[0] == bK[0] && piece[1] == bK[1]) {
+                    bK = board.map(move.substring(3, 5));
+                    bkingmov = true;
+                }
+                if (board.findCheck(wK[0], wK[1])) {
+                    board.setOccuppiedTile(board.getPiece(dest[0], dest[1]), move.substring(0, 2));
+                    if (empty) {
+                        board.setEmptyTile(move.substring(3, 5));
+                    } else {
+                        board.setOccuppiedTile(temp, move.substring(3, 5));
+                    }
+                    if (wkingmov) {
+                        wK = piece;
+                    }
+                    if (bkingmov) {
+                        bK = dest;
+                    }
+                    //put notification or toast here
+                    Toast.makeText(MainActivity.this,"Illegal move, try again", Toast.LENGTH_LONG).show();
+                    System.out.println("Illegal move, try again");
+                    System.out.println();
+                    if (bturn) {
+                        bturn = false;
+                        wturn = true;
+                    } else {
+                        bturn = true;
+                        wturn = false;
+                    }
+                    return;
+                } else {
+                    wCheck = false;
+                }
+            }
+        } else {
+            //put notification here
+            Toast.makeText(MainActivity.this,"Illegal move, try again", Toast.LENGTH_LONG).show();
+            System.out.println("Illegal move, try again");
+            System.out.println();
+            if (bturn) {
+                bturn = false;
+                wturn = true;
+            } else {
+                bturn = true;
+                wturn = false;
+            }
+            return;
+        }
+        board.toogleturns();
     }
 
-    /*public View.OnClickListener selected= new View.OnClickListener(){
-        @Override
-        public void onClick(View view) {
-            view.setBackgroundResource(R.color.blue);
 
-        }
-    };*/
-    public void clickChangeColor(final ImageButton currentButton) {
+
+
+
+
+
+    public void clicked(final String pos, final ImageButton currentButton) {
 
         currentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                Toast.makeText(MainActivity.this, "it works",Toast.LENGTH_LONG).show();
-                ColorDrawable buttonColor = (ColorDrawable) currentButton.getBackground();
-                int colorId = buttonColor.getColor();
-                if(colorId == getResources().getColor(R.color.orange)) {
-                    sign = 1;
-                    currentButton.setBackgroundColor(Color.BLUE);
-                }else if(colorId == getResources().getColor(R.color.darkgreen)){
-                    sign = 2;
-                    currentButton.setBackgroundColor(Color.BLUE);
-                }else if(sign == 1) {
-                    sign = 0;
-                    currentButton.setBackgroundColor(getColor(R.color.orange));
-                }else if(sign == 2){
-                    sign = 0;
-                    currentButton.setBackgroundColor(getColor(R.color.darkgreen));
+                if(done == false){
+                    done = true;
+                    first_mov = pos;
+                    start = currentButton;
+                    System.out.println("first click");
+                    return;
                 }
+                else{
+                    second_mov = pos;
+                    done = false;
+                    finish = currentButton;
+                    System.out.println("second click");
+                    System.out.println(first_mov + " " + second_mov);
+                    past_mov = first_mov + " " + second_mov;
+                    move(first_mov, second_mov, start, finish);
+                }
+
             }
         });
     }

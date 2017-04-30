@@ -13,8 +13,6 @@ import android.os.Bundle;
 
 import com.example.timremmert.chess.R;
 
-import static com.example.timremmert.chess.R.drawable.chess_brook;
-import static com.example.timremmert.chess.R.id.zerozero;
 
 /**
  * Class to represent the board of a chess game.
@@ -333,10 +331,6 @@ public class Board {
 
     }
 
-    public void setImage(ImageButton image, int x, int y){
-        this.board[x][y].setImage(image);
-
-    }
     /**
      * Method to set a tile of the board to a tile without a piece
      * @param loc This is the location of the piece on the board
@@ -346,6 +340,7 @@ public class Board {
         int[] coordinate = this.map(loc);
         return this.board[coordinate[0]][coordinate[1]] = new Tile.EmptyTile(loc);
     }
+
     /**
      * Method to set a tile of the board to a tile without a piece
      * @param x This is the row location of the piece

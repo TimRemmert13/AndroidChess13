@@ -18,16 +18,12 @@ public abstract class Tile {
      * Initializes a tile to have the given coordinate
      * @param coordinate
      */
-    protected ImageButton image;
+
 
     public Tile(String coordinate){
         this.coordinate = coordinate;
     }
 
-    public Tile(String coordinate,ImageButton image){
-        this.coordinate = coordinate;
-        this.image = image;
-    }
     /**
      * Abstract method to return true if a piece is on the tile
      * or false if a piece is not on the tile
@@ -45,7 +41,6 @@ public abstract class Tile {
      * @author Tim Remmert
      *
      */
-    public abstract void setImage(ImageButton image);
 
     public static final class EmptyTile extends Tile {
         /**
@@ -56,11 +51,6 @@ public abstract class Tile {
         public EmptyTile(String coordinate) {
             super(coordinate);
         }
-
-        public EmptyTile(String coordinate, ImageButton image) {
-            super(coordinate, image);
-        }
-
         /**
          * Always returns true because it is an empty tile.
          */
@@ -77,10 +67,6 @@ public abstract class Tile {
             return null;
         }
 
-        @Override
-        public void setImage(ImageButton image) {
-            this.image = image;
-        }
     }
     /**
      * Class to represent a tile with a piece on it
@@ -102,10 +88,6 @@ public abstract class Tile {
             super(coordinate);
             this.piece = piece;
         }
-        public OccupiedTile(String coordinate, Piece piece, ImageButton image){
-            super(coordinate, image);
-            this.piece = piece;
-        }
         /**
          * Always returns false because there is a piece on the tile
          */
@@ -119,11 +101,6 @@ public abstract class Tile {
         @Override
         public Piece getPiece(){
             return this.piece;
-        }
-
-        @Override
-        public void setImage(ImageButton image){
-            this.image = image;
         }
     }
 

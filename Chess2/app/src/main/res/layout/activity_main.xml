@@ -424,7 +424,7 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:background="@color/darkgreen"/>
-            />
+        />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -489,3 +489,4 @@
             android:background="@color/orange"/>
     </LinearLayout>
 </LinearLayout>
+
