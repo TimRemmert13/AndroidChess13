@@ -10,6 +10,8 @@ import android.widget.ImageButton;
 import android.view.*;
 import android.widget.Toast;
 import game.*;
+
+
 import pieces.*;
 import android.app.AlertDialog.*;
 
@@ -61,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         //create board
         Board board = new Board(8, 8);
         this.board = board;
