@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id ="@+id/base"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="0dp"
@@ -23,7 +24,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@drawable/chess_brook" />
+            android:src="@drawable/chess_brook"
+            android:tag="a8" />
 
         <ImageButton
             android:id="@+id/zeroone"
@@ -31,7 +33,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/darkgreen"
-            android:src="@drawable/chess_bknight" />
+            android:src="@drawable/chess_bknight"
+            android:tag ="b8"/>
 
         <ImageButton
             android:id="@+id/zerotwo"
@@ -39,7 +42,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@drawable/chess_bbishop" />
+            android:src="@drawable/chess_bbishop"
+            android:tag ="c8"/>
 
         <ImageButton
             android:id="@+id/zerothree"
@@ -47,7 +51,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/darkgreen"
-            android:src="@drawable/chess_bqueen" />
+            android:src="@drawable/chess_bqueen"
+            android:tag ="d8"/>
 
         <ImageButton
             android:id="@+id/zerofour"
@@ -55,7 +60,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/orange"
-            android:src="@drawable/chess_bking" />
+            android:src="@drawable/chess_bking"
+            android:tag ="e8"/>
 
         <ImageButton
             android:id="@+id/zerofive"
@@ -63,21 +69,24 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/darkgreen"
-            android:src="@drawable/chess_bbishop" />
+            android:src="@drawable/chess_bbishop"
+            android:tag ="f8"/>
         <ImageButton
             android:id="@+id/zerosix"
             android:src="@drawable/chess_bknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="g8"/>
         <ImageButton
             android:id="@+id/zeroseven"
             android:src="@drawable/chess_brook"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="h8"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -91,7 +100,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:background="@color/darkgreen"
-            android:src="@drawable/chess_bpawn" />
+            android:src="@drawable/chess_bpawn"
+            android:tag ="a7"/>
 
         <ImageButton
             android:id="@+id/oneone"
@@ -99,49 +109,57 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="b7"
+            />
         <ImageButton
             android:id="@+id/onetwo"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="c7"/>
         <ImageButton
             android:id="@+id/onethree"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="d7"/>
         <ImageButton
             android:id="@+id/onefour"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="e7"/>
         <ImageButton
             android:id="@+id/onefive"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="f7"/>
         <ImageButton
             android:id="@+id/onesix"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="g7"/>
         <ImageButton
             android:id="@+id/oneseven"
             android:src="@drawable/chess_bpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="h7"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -153,49 +171,57 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="a6"/>
         <ImageButton
             android:id="@+id/twoone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="b6"/>
         <ImageButton
             android:id="@+id/twotwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="c6"/>
         <ImageButton
             android:id="@+id/twothree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="d6"/>
         <ImageButton
             android:id="@+id/twofour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="e6"/>
         <ImageButton
             android:id="@+id/twofive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="f6"/>
         <ImageButton
             android:id="@+id/twosix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="g6"/>
         <ImageButton
             android:id="@+id/twoseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="h6"/>
 
     </LinearLayout>
     <LinearLayout
@@ -208,49 +234,57 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="a5"/>
         <ImageButton
             android:id="@+id/threeone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="b5"/>
         <ImageButton
             android:id="@+id/threetwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="c5"/>
         <ImageButton
             android:id="@+id/threethree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="d5"/>
         <ImageButton
             android:id="@+id/threefour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="e5"/>
         <ImageButton
             android:id="@+id/threefive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="f5"/>
         <ImageButton
             android:id="@+id/threesix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="g5"/>
         <ImageButton
             android:id="@+id/threeseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="h5"/>
 
     </LinearLayout>
     <LinearLayout
@@ -263,49 +297,57 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="a4"/>
         <ImageButton
             android:id="@+id/fourone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="b4"/>
         <ImageButton
             android:id="@+id/fourtwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="c4"/>
         <ImageButton
             android:id="@+id/fourthree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="d4"/>
         <ImageButton
             android:id="@+id/fourfour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="e4"/>
         <ImageButton
             android:id="@+id/fourfive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="f4"/>
         <ImageButton
             android:id="@+id/foursix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="g4"/>
         <ImageButton
             android:id="@+id/fourseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="h4"/>
 
     </LinearLayout>
     <LinearLayout
@@ -318,49 +360,57 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="a3"/>
         <ImageButton
             android:id="@+id/fiveone"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="b3"/>
         <ImageButton
             android:id="@+id/fivetwo"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="c3"/>
         <ImageButton
             android:id="@+id/fivethree"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="d3"/>
         <ImageButton
             android:id="@+id/fivefour"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="e3"/>
         <ImageButton
             android:id="@+id/fivefive"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="f3"/>
         <ImageButton
             android:id="@+id/fivesix"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="g3"/>
         <ImageButton
             android:id="@+id/fiveseven"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="h3"/>
 
     </LinearLayout>
     <LinearLayout
@@ -374,56 +424,64 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="a2"/>
         <ImageButton
             android:id="@+id/sixone"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="b2"/>
         <ImageButton
             android:id="@+id/sixtwo"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="c2"/>
         <ImageButton
             android:id="@+id/sixthree"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="d2"/>
         <ImageButton
             android:id="@+id/sixfour"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="e2"/>
         <ImageButton
             android:id="@+id/sixfive"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="f2"/>
         <ImageButton
             android:id="@+id/sixsix"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="g2"/>
         <ImageButton
             android:id="@+id/sixseven"
             android:src="@drawable/chess_wpawn"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="h2"/>
         />
     </LinearLayout>
     <LinearLayout
@@ -437,56 +495,65 @@
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="a1"/>
         <ImageButton
             android:id="@+id/sevenone"
             android:src="@drawable/chess_wknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="b1"/>
         <ImageButton
             android:id="@+id/seventwo"
             android:src="@drawable/chess_wbishop"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="c1"/>
         <ImageButton
             android:id="@+id/seventhree"
             android:src="@drawable/chess_wqueen"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="d1"/>
         <ImageButton
             android:id="@+id/sevenfour"
             android:src="@drawable/chess_wking"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="e1"/>
         <ImageButton
             android:id="@+id/sevenfive"
             android:src="@drawable/chess_wbishop"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="f1"/>
         <ImageButton
             android:id="@+id/sevensix"
             android:src="@drawable/chess_wknight"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/darkgreen"/>
+            android:background="@color/darkgreen"
+            android:tag ="g1"
+            />
         <ImageButton
             android:id="@+id/sevenseven"
             android:src="@drawable/chess_wrook"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="match_parent"
-            android:background="@color/orange"/>
+            android:background="@color/orange"
+            android:tag ="h1"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"

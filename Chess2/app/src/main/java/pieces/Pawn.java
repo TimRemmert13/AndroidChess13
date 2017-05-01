@@ -1,5 +1,7 @@
 package pieces;
 
+import java.util.Random;
+
 import game.Player;
 import game.Board;
 import game.Tile;
@@ -121,6 +123,78 @@ public class Pawn extends Piece{
 
         }
         return false;
+    }
+
+    @Override
+    public String randomMove(int x, int y){
+        String start = findCoord(x,y);
+        if(this.getPlayer().getColor() == "black") {
+            x ++;
+        }
+        if(this.getPlayer().getColor() == "white"){
+            x --;
+        }
+        String dest = findCoord(x,y);
+        String move = start + " " + dest;
+        return move;
+    }
+
+    public String findCoord(int x, int y){
+        String c = "a", z = "8";
+        switch(y){
+            case 0 :
+                c = "a";
+                break;
+            case 1 :
+                c = "b";
+                break;
+            case 2 :
+                c = "c";
+                break;
+            case 3 :
+                c = "d";
+                break;
+            case 4 :
+                c = "e";
+                break;
+            case 5 :
+                c = "f";
+                break;
+            case 6:
+                c = "g";
+                break;
+            case 7:
+                c = "h";
+                break;
+        }
+        switch(x){
+            case 0 :
+                z = "8";
+                break;
+            case 1 :
+                z = "7";
+                break;
+            case 2 :
+                z = "6";
+                break;
+            case 3 :
+                z = "5";
+                break;
+            case 4 :
+                z = "4";
+                break;
+            case 5 :
+                z = "3";
+                break;
+            case 6:
+                z = "2";
+                break;
+            case 7:
+                z = "1";
+                break;
+        }
+        String move = c+z;
+        return move;
     }
     /**
      * Method returns either bp for black's pawn or wp for whites pawn

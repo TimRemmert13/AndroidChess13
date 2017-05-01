@@ -1,5 +1,7 @@
 package pieces;
 
+import java.util.Random;
+
 import game.Board;
 import game.Player;
 import game.Tile;
@@ -157,6 +159,112 @@ public class Rook extends Piece{
             }
         }
         return false;
+    }
+
+    @Override
+    public String randomMove(int x, int y){
+        String start = findCoord(x,y);
+        Random rand = new Random();
+        boolean sat = true;
+        while(sat){
+            int deter = rand.nextInt(5);
+            if(deter == 1){
+                if(x == 7){
+                    continue;
+                }
+                else{
+                    x++;
+                    break;
+                }
+            }
+            if(deter == 2){
+                if(y == 7){
+                    continue;
+                }else{
+                    y ++;
+                    break;
+                }
+            }
+            if(deter == 3){
+                if(x == 0){
+                    continue;
+                }
+                else{
+                    x --;
+                    break;
+                }
+            }
+            if(deter == 4){
+                if(y == 0){
+                    continue;
+                }
+                else{
+                    y --;
+                    break;
+                }
+            }
+        }
+        String dest = findCoord(x,y);
+        String move = start + " " + dest;
+        return move;
+    }
+
+    public String findCoord(int x, int y){
+        String c = "a", z = "8";
+        switch(y){
+            case 0 :
+                c = "a";
+                break;
+            case 1 :
+                c = "b";
+                break;
+            case 2 :
+                c = "c";
+                break;
+            case 3 :
+                c = "d";
+                break;
+            case 4 :
+                c = "e";
+                break;
+            case 5 :
+                c = "f";
+                break;
+            case 6:
+                c = "g";
+                break;
+            case 7:
+                c = "h";
+                break;
+        }
+        switch(x){
+            case 0 :
+                z = "8";
+                break;
+            case 1 :
+                z = "7";
+                break;
+            case 2 :
+                z = "6";
+                break;
+            case 3 :
+                z = "5";
+                break;
+            case 4 :
+                z = "4";
+                break;
+            case 5 :
+                z = "3";
+                break;
+            case 6:
+                z = "2";
+                break;
+            case 7:
+                z = "1";
+                break;
+        }
+        String move = c+z;
+        return move;
     }
     /**
      * Method to return bR for black's rook or wR for white's rook.
