@@ -6,6 +6,7 @@ import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
+import android.os.SystemClock;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -42,7 +43,8 @@ import static com.example.timremmert.chess.R.drawable.chess_wrook;
 
 //commit test
 public class MainActivity extends AppCompatActivity {
-
+    String curPos;
+    ImageButton savedButton;
     boolean done = false;
 
     boolean wturn = true;
@@ -575,15 +577,33 @@ public class MainActivity extends AppCompatActivity {
 
     public void clicked(final String pos, final ImageButton currentButton) {
 
+
         currentButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 if (done == false) {
                     done = true;
                     first_mov = pos;
                     start = currentButton;
+                    ColorDrawable buttonColor = (ColorDrawable) currentButton.getBackground();
+                    int colorId = buttonColor.getColor();
+                    if(colorId == getResources().getColor(R.color.orange)) {
+                        currentButton.setBackgroundColor(getResources().getColor(R.color.red));
+                        curPos = "orange";//SystemClock.sleep(2000);
+                        savedButton = currentButton;
+                        //currentButton.setBackgroundColor(getColor(R.color.orange));
+                    }else if(colorId == getResources().getColor(R.color.darkgreen)){
+                        currentButton.setBackgroundColor(getResources().getColor(R.color.red));
+                        curPos = "darkgreen";//SystemClock.sleep(2000);
+                        savedButton = currentButton;
+                    }
                     System.out.println("first click");
                     return;
                 } else {
+                    if(savedButton!=null&&curPos == "orange"){
+                        savedButton.setBackgroundColor(getColor(R.color.orange));
+                    }else if(savedButton!=null&&curPos == "darkgreen"){
+                        savedButton.setBackgroundColor(getColor(R.color.darkgreen));
+                    }
                     second_mov = pos;
                     done = false;
                     finish = currentButton;
@@ -596,6 +616,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    //public void toOrignalColor()
 
     public void resign(final Button button){
         button.setOnClickListener(new View.OnClickListener(){
