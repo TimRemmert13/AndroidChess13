@@ -241,6 +241,10 @@ public class MainActivity extends AppCompatActivity {
 
         ai((Button) findViewById(R.id.ai));
 
+        resign((Button) findViewById(R.id.resign));
+
+        draw((Button) findViewById(R.id.draw));
+
     }
 
     public void setImage(Piece p, ImageButton image){
@@ -572,15 +576,14 @@ public class MainActivity extends AppCompatActivity {
     public void clicked(final String pos, final ImageButton currentButton) {
 
         currentButton.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                if(done == false){
+            public void onClick(View v) {
+                if (done == false) {
                     done = true;
                     first_mov = pos;
                     start = currentButton;
                     System.out.println("first click");
                     return;
-                }
-                else{
+                } else {
                     second_mov = pos;
                     done = false;
                     finish = currentButton;
@@ -592,6 +595,79 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    public void resign(final Button button){
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(wturn){
+                    Toast.makeText(MainActivity.this, "White Resign, Black Wins!", Toast.LENGTH_LONG).show();
+                    finish();
+                }else{
+                    Toast.makeText(MainActivity.this, "Black Resign, White Wins!", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+
+
+            }
+        });
+    }
+
+    public void draw(final Button button){
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v){
+
+                if(bturn){
+                    Toast.makeText(MainActivity.this, "White wants to draw", Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                    alert.setMessage("White wants to draw. Draw?");
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    Toast.makeText(MainActivity.this, "Draw!", Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            });
+                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this, "you clicked No, Game Resume", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog = alert.create();
+                    alertDialog.show();
+
+                }else{
+                    Toast.makeText(MainActivity.this, "Black wants to draw", Toast.LENGTH_LONG).show();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                    alert.setMessage("Black wants to draw. Draw?");
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    Toast.makeText(MainActivity.this, "Draw!", Toast.LENGTH_LONG).show();
+                                    finish();
+                                }
+                            });
+                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this, "you clicked No, Game Resume", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                    AlertDialog alertDialog = alert.create();
+                    alertDialog.show();
+
+                }
+
+
+            }
+        });
+
     }
 
     public void undo(final Button button){
