@@ -10,14 +10,23 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutCompat;
+import android.text.Editable;
 import android.widget.ImageButton;
 import android.view.*;
 import android.widget.Toast;
 import game.*;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import android.widget.EditText;
+import android.content.Intent;
 
-
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.net.MalformedURLException;
 import java.util.Random;
 import android.content.res.Resources;
@@ -71,6 +80,10 @@ public class MainActivity extends AppCompatActivity {
     String first_mov;
 
     String second_mov;
+
+    public static Game game;
+
+    ArrayList<String> moves = new ArrayList<String>();
 
     String undo_mov;
 
@@ -247,56 +260,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void setImage(Piece p, ImageButton image){
-        String actual = p.getName();
-        Resources resource = getResources();
-        switch(actual){
-            case "wK" :
-                image.setImageResource(chess_wking);
-                break;
-            case "bK" :
-                image.setImageResource(chess_bking);
-                break;
-            case "wQ" :
-                image.setImageResource(chess_wqueen);
-                break;
-            case "bQ" :
-                image.setImageResource(chess_bqueen);
-                break;
-            case "wB" :
-                image.setImageResource(chess_wbishop);
-                break;
-            case "bB" :
-                image.setImageResource(chess_bbishop);
-                break;
-            case "wN" :
-                Bitmap bitmap = BitmapFactory.decodeResource(getResources(), chess_wknight);
-                image.setImageBitmap(bitmap);
-                //image.requestLayout();
-
-                //image.invalidate();
-                break;
-            case "bN" :
-                image.setImageResource(chess_bknight);
-                break;
-            case "wR" :
-                image.setImageResource(chess_wrook);
-                break;
-            case "bR" :
-                image.setImageResource(chess_brook);
-                break;
-            case "wp" :
-                Bitmap bitmap1 = BitmapFactory.decodeResource(getResources(), chess_wpawn);
-                image.setImageBitmap(bitmap1);
-                //image.requestLayout();
-
-                //image.invalidate();
-                break;
-            case "bp" :
-                image.setImageResource(chess_bpawn);
-                break;
-        }
-    }
 
     public void setImage(int start, int dest, ImageButton image){
         String actual = board.getPiece(start, dest).getName();
@@ -340,6 +303,18 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void reset(){
+        Board board = new Board(8, 8);
+        this.board = board;
+        board.getPlayer(7, 0).toggleTurn();
+        start = null;
+        finish = null;
+        wturn = true;
+        bturn = false;
+        setContentView(R.layout.activity_main);
+        moves = null;
+    }
+
     public void clearImage(ImageButton image){
         image.setImageDrawable(image.getBackground());
     }
@@ -351,16 +326,26 @@ public class MainActivity extends AppCompatActivity {
                     //put notification here
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
                     alert.setMessage("Checkmate! White wins!");
+                    final EditText input = new EditText(this);
+                    input.setHint("Game title");
+                    alert.setTitle("Checkmate!");
+                    alert.setMessage("Would you like to save this game?");
+                    alert.setView(input);
                     alert.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
-                                    Toast.makeText(MainActivity.this, "you clicked Ok", Toast.LENGTH_LONG).show();
+                                    String title = input.getText().toString();
+                                    Game game = new Game(moves,title);
+                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                    intent.putExtra("GAME", game);
+                                    startActivity(intent);
                                 }
                             });
                     alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            reset();
                             finish();
                         }
                     });
@@ -384,16 +369,26 @@ public class MainActivity extends AppCompatActivity {
                     //put notification here
                     AlertDialog.Builder alert = new AlertDialog.Builder(this);
                     alert.setMessage("Checkmate! White wins!");
+                    final EditText input = new EditText(this);
+                    input.setHint("Game title");
+                    alert.setTitle("Checkmate!");
+                    alert.setMessage("Would you like to save this game?");
+                    alert.setView(input);
                     alert.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
-                                    Toast.makeText(MainActivity.this, "you clicked Ok", Toast.LENGTH_LONG).show();
+                                    String title = input.getText().toString();
+                                    Game game = new Game(moves,title);
+                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                    intent.putExtra("GAME", game);
+                                    startActivity(intent);
                                 }
                             });
                             alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
+                            reset();
                             finish();
                         }
                     });
@@ -448,6 +443,8 @@ public class MainActivity extends AppCompatActivity {
             //update image here
             setImage(piece[0], piece[1], finish);
             clearImage(start);
+            String save = first_mov + " " + second_mov;
+            moves.add(save);
             System.out.println("reset");
             board.setOccuppiedTile(board.getPiece(piece[0], piece[1]), move.substring(3, 5));
             board.setEmptyTile(move.substring(0, 2));
@@ -499,6 +496,10 @@ public class MainActivity extends AppCompatActivity {
                     if (bkingmov) {
                         bK = piece;
                     }
+                    else{
+                        setImage(piece[0], piece[1], finish);
+                        clearImage(start);
+                    }
                     //put notification here
                     Toast.makeText(MainActivity.this,"Illegal move, try again", Toast.LENGTH_LONG).show();
                     System.out.println("Illegal move, try again");
@@ -513,6 +514,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 } else {
                     bCheck = false;
+                    setImage(piece[0], piece[1], finish);
+                    clearImage(start);
                 }
 
             }
@@ -554,6 +557,8 @@ public class MainActivity extends AppCompatActivity {
                     return;
                 } else {
                     wCheck = false;
+                    setImage(piece[0], piece[1], finish);
+                    clearImage(start);
                 }
             }
         } else {
@@ -597,20 +602,68 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+
     public void resign(final Button button){
         button.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
 
                 if(wturn){
-                    Toast.makeText(MainActivity.this, "White Resign, Black Wins!", Toast.LENGTH_LONG).show();
-                    finish();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                    alert.setMessage("Black wins!");
+                    final EditText input = new EditText(MainActivity.this);
+                    input.setHint("Game title");
+                    alert.setTitle("You have Resigned");
+                    alert.setMessage("Would you like to save this game?");
+                    alert.setView(input);
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    String title = input.getText().toString();
+                                    Game game = new Game(moves,title);
+                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                    intent.putExtra("GAME", game);
+                                    startActivity(intent);
+                                }
+                            });
+                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            reset();
+                            finish();
+                        }
+                    });
+                    AlertDialog alertDialog = alert.create();
+                    alertDialog.show();
+
                 }else{
-                    Toast.makeText(MainActivity.this, "Black Resign, White Wins!", Toast.LENGTH_LONG).show();
-                    finish();
+                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                    alert.setMessage("White wins!");
+                    final EditText input = new EditText(MainActivity.this);
+                    input.setHint("Game title");
+                    alert.setTitle("You have Resigned");
+                    alert.setMessage("Would you like to save this game?");
+                    alert.setView(input);
+                    alert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener(){
+                                @Override
+                                public void onClick(DialogInterface d, int arg){
+                                    String title = input.getText().toString();
+                                    Game game = new Game(moves,title);
+                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                    intent.putExtra("GAME", game);
+                                    startActivity(intent);
+                                }
+                            });
+                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            reset();
+                            finish();
+                        }
+                    });
                 }
-
-
             }
         });
     }
@@ -621,15 +674,40 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
 
                 if(bturn){
-                    Toast.makeText(MainActivity.this, "White wants to draw", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Black wants to draw", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                    alert.setMessage("White wants to draw. Draw?");
+                    alert.setMessage("Black wants to draw. Draw?");
                     alert.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
-                                    Toast.makeText(MainActivity.this, "Draw!", Toast.LENGTH_LONG).show();
-                                    finish();
+                                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                                    alert.setMessage("Draw!");
+                                    final EditText input = new EditText(MainActivity.this);
+                                    input.setHint("Game title");
+                                    alert.setTitle("It's a Draw!");
+                                    alert.setMessage("Would you like to save this game?");
+                                    alert.setView(input);
+                                    alert.setPositiveButton("Ok",
+                                            new DialogInterface.OnClickListener(){
+                                                @Override
+                                                public void onClick(DialogInterface d, int arg){
+                                                    String title = input.getText().toString();
+                                                    Game game = new Game(moves,title);
+                                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                                    intent.putExtra("GAME", game);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            reset();
+                                            finish();
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alert.create();
+                                    alertDialog.show();
                                 }
                             });
                     alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -642,15 +720,40 @@ public class MainActivity extends AppCompatActivity {
                     alertDialog.show();
 
                 }else{
-                    Toast.makeText(MainActivity.this, "Black wants to draw", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "White wants to draw", Toast.LENGTH_LONG).show();
                     AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
-                    alert.setMessage("Black wants to draw. Draw?");
+                    alert.setMessage("White wants to draw. Draw?");
                     alert.setPositiveButton("Ok",
                             new DialogInterface.OnClickListener(){
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
-                                    Toast.makeText(MainActivity.this, "Draw!", Toast.LENGTH_LONG).show();
-                                    finish();
+                                    AlertDialog.Builder alert = new AlertDialog.Builder(MainActivity.this);
+                                    alert.setMessage("Draw!");
+                                    final EditText input = new EditText(MainActivity.this);
+                                    input.setHint("Game title");
+                                    alert.setTitle("Its a Draw");
+                                    alert.setMessage("Would you like to save this game?");
+                                    alert.setView(input);
+                                    alert.setPositiveButton("Ok",
+                                            new DialogInterface.OnClickListener(){
+                                                @Override
+                                                public void onClick(DialogInterface d, int arg){
+                                                    String title = input.getText().toString();
+                                                    Game game = new Game(moves,title);
+                                                    Intent intent = new Intent(MainActivity.this, base.class);
+                                                    intent.putExtra("GAME", game);
+                                                    startActivity(intent);
+                                                }
+                                            });
+                                    alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            reset();
+                                            finish();
+                                        }
+                                    });
+                                    AlertDialog alertDialog = alert.create();
+                                    alertDialog.show();
                                 }
                             });
                     alert.setNegativeButton("No",new DialogInterface.OnClickListener() {
