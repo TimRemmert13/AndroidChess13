@@ -62,8 +62,7 @@ public class base extends AppCompatActivity implements AdapterView.OnItemClickLi
             games.add(game);
             save();
         }
-
-        save();
+        
         ArrayAdapter<Game> adapter = new ArrayAdapter<Game>(this,
                 android.R.layout.simple_list_item_1, games);
         listview.setAdapter(adapter);
