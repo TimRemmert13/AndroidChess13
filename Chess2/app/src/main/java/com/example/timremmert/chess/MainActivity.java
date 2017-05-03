@@ -29,8 +29,9 @@ import android.content.Intent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.net.MalformedURLException;
+import java.util.Calendar;
 import java.util.Random;
-import android.content.res.Resources;
+import java.util.Date;
 
 
 import pieces.*;
@@ -338,7 +339,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
                                     String title = input.getText().toString();
-                                    Game game = new Game(moves,title);
+                                    Calendar cal = Calendar.getInstance();
+                                    Date date = cal.getTime();
+                                    Game game = new Game(moves,title,date);
                                     Intent intent = new Intent(MainActivity.this, base.class);
                                     intent.putExtra("GAME", game);
                                     startActivity(intent);
@@ -381,7 +384,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
                                     String title = input.getText().toString();
-                                    Game game = new Game(moves,title);
+                                    Calendar cal = Calendar.getInstance();
+                                    Date date = cal.getTime();
+                                    Game game = new Game(moves,title,date);
                                     Intent intent = new Intent(MainActivity.this, base.class);
                                     intent.putExtra("GAME", game);
                                     startActivity(intent);
@@ -642,7 +647,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
                                     String title = input.getText().toString();
-                                    Game game = new Game(moves,title);
+                                    Calendar cal = Calendar.getInstance();
+                                    Date date = cal.getTime();
+                                    Game game = new Game(moves,title,date);
                                     Intent intent = new Intent(MainActivity.this, base.class);
                                     intent.putExtra("GAME", game);
                                     startActivity(intent);
@@ -671,7 +678,9 @@ public class MainActivity extends AppCompatActivity {
                                 @Override
                                 public void onClick(DialogInterface d, int arg){
                                     String title = input.getText().toString();
-                                    Game game = new Game(moves,title);
+                                    Calendar cal = Calendar.getInstance();
+                                    Date date = cal.getTime();
+                                    Game game = new Game(moves,title,date);
                                     Intent intent = new Intent(MainActivity.this, base.class);
                                     intent.putExtra("GAME", game);
                                     startActivity(intent);
@@ -714,7 +723,9 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface d, int arg){
                                                     String title = input.getText().toString();
-                                                    Game game = new Game(moves,title);
+                                                    Calendar cal = Calendar.getInstance();
+                                                    Date date = cal.getTime();
+                                                    Game game = new Game(moves,title,date);
                                                     Intent intent = new Intent(MainActivity.this, base.class);
                                                     intent.putExtra("GAME", game);
                                                     startActivity(intent);
@@ -760,7 +771,9 @@ public class MainActivity extends AppCompatActivity {
                                                 @Override
                                                 public void onClick(DialogInterface d, int arg){
                                                     String title = input.getText().toString();
-                                                    Game game = new Game(moves,title);
+                                                    Calendar cal = Calendar.getInstance();
+                                                    Date date = cal.getTime();
+                                                    Game game = new Game(moves,title, date);
                                                     Intent intent = new Intent(MainActivity.this, base.class);
                                                     intent.putExtra("GAME", game);
                                                     startActivity(intent);

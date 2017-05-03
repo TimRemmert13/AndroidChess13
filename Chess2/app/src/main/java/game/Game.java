@@ -5,6 +5,8 @@ package game;
  */
 import java.util.ArrayList;
 import java.io.Serializable;
+import java.util.Calendar;
+import java.util.Date;
 
 public class Game implements Serializable {
 
@@ -12,9 +14,12 @@ public class Game implements Serializable {
 
     String title;
 
-    public Game(ArrayList<String> moves, String title){
+    Date date;
+
+    public Game(ArrayList<String> moves, String title, Date date){
         this.moves = moves;
         this.title = title;
+        this.date = date;
     }
 
     public ArrayList<String> getMoves(){
@@ -23,6 +28,10 @@ public class Game implements Serializable {
 
     public String getTitle(){
         return this.title;
+    }
+
+    public Date getDate(){
+        return this.date;
     }
     public String toString(){
         return this.title;
