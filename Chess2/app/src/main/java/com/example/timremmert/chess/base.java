@@ -83,7 +83,9 @@ public class base extends AppCompatActivity implements AdapterView.OnItemClickLi
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Collections.sort(games, new titleSorter());
+                ArrayList<Game> temp = new ArrayList<Game>(games);
+                Collections.sort(temp, new titleSorter());
+                games = temp;
             }
         });
     }
@@ -91,12 +93,9 @@ public class base extends AppCompatActivity implements AdapterView.OnItemClickLi
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             Collections.sort(games, new Comparator<Game>() {
-                 @Override
-                 public int compare(Game o1, Game o2) {
-                     return o1.getDate().compareTo(o2.getDate());
-                 }
-             });
+                ArrayList<Game> temp = new ArrayList<Game>(games);
+                Collections.sort(temp, new dateSorter());
+                games = temp;
             }
         });
     }
@@ -124,11 +123,11 @@ public class base extends AppCompatActivity implements AdapterView.OnItemClickLi
                 file.createNewFile();
             }
                 FileOutputStream fos = new FileOutputStream(file);
-                ObjectOutputStream oos = new ObjectOutputStream(fos); //Select where you wish to save the file...
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
                 oos.writeObject(games);
-                System.out.println("saved");// write the class as an 'object'
-                oos.flush(); // flush the stream to insure all of the information was written to 'save_object.bin'
-                oos.close();// close the
+                System.out.println("saved");
+                oos.flush();
+                oos.close();
 
         } catch (IOException i) {
             i.printStackTrace();
